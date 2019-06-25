@@ -1,0 +1,1637 @@
+{
+	"dataRoles": [
+		{
+			"displayName": "数据字段",
+			"name": "mainMeasure",
+			"kind": "Measure",
+			"description": "Put main data label field here."
+		},
+		{
+			"displayName": "提示字段",
+			"name": "tooltipMeasures",
+			"kind": "Measure",
+			"description": "All fields present here will be used to display as a tooltip on card when 'Show Tooltip' option is enabled."
+		},
+		{
+			"displayName": "条件字段",
+			"name": "conditionMeasure",
+			"kind": "Measure",
+			"description": "If you want to use conditional formatting by different field, put that here otherwise leave it empty.",
+			"requiredTypes": [
+				{
+					"numeric": true
+				},
+				{
+					"integer": true
+				}
+			]
+		},
+		{
+			"displayName": "前缀字段",
+			"name": "prefixMeasure",
+			"kind": "Measure",
+			"description": "Put prefix field here. If you want constant text as a prefix then add it through prefix settings in format pane."
+		},
+		{
+			"displayName": "后缀字段",
+			"name": "postfixMeasure",
+			"kind": "Measure",
+			"description": "Put postfix field here. If you want constant text as a postfix then add it through postfix settings in format pane."
+		}
+	],
+	"dataViewMappings": [
+		{
+			"conditions": [
+				{
+					"mainMeasure": {
+						"min": 0,
+						"max": 1
+					},
+					"conditionMeasure": {
+						"min": 0,
+						"max": 1
+					}
+				}
+			],
+			"table": {
+				"rows": {
+					"select": [
+						{
+							"for": {
+								"in": "mainMeasure"
+							}
+						},
+						{
+							"for": {
+								"in": "tooltipMeasures"
+							}
+						},
+						{
+							"for": {
+								"in": "conditionMeasure"
+							}
+						},
+						{
+							"for": {
+								"in": "prefixMeasure"
+							}
+						},
+						{
+							"for": {
+								"in": "postfixMeasure"
+							}
+						}
+					]
+				}
+			}
+		}
+	],
+	"objects": {
+		"general": {
+			"displayName": "通用",
+			"description": "General Power BI settings with extra Advance Card related settings such as alignment of card content.",
+			"properties": {
+				"alignmentSpacing": {
+					"displayName": "对齐间距",
+					"description": "Specify spacing in px from left or right border. Positive number will move content to right and negative number will move content to left.",
+					"type": {
+						"numeric": true
+					}
+				},
+				"alignment": {
+					"displayName": "对齐方式",
+					"description": "Align the content of the card to either left, right or center.",
+					"type": {
+						"formatting": {
+							"alignment": true
+						}
+					}
+				}
+			}
+		},
+		"dataLabelSettings": {
+			"displayName": "数据标签",
+			"description": "Format settings to modify look and feel of the data label value for which value comes from 'Data field'.",
+			"properties": {
+				"color": {
+					"displayName": "颜色",
+					"description": "Default color of the data label. If you are using conditional formatting and no condition is satisfied, then this color will be visible.",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},	
+				"displayScale": {
+					"displayName": "显示比例",
+					"description": "显示比例.",
+					"type": {
+						"numeric": true
+					}
+				},
+				"displayScaleName": {
+					"displayName": "比例单位",
+					"description": "比例单位.",
+					"type": {
+						"text": true						
+					}
+				},
+				"decimalPlaces": {
+					"displayName": "小数位数",
+					"description": "Specify decimal places for decimal number.",
+					"type": {
+						"numeric": true
+					}
+				},
+				"fontSize": {
+					"displayName": "字体大小",
+					"description": "Specify font size for data label.",
+					"type": {
+						"formatting": {
+							"fontSize": true
+						}
+					}
+				},
+				"fontFamily": {
+					"displayName": "字体",
+					"description": "Specify font family for data label.",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": "DIN",
+								"value": "wf_standard-font, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Arial",
+								"value": "Arial"
+							},
+							{
+								"displayName": "Arial Black",
+								"value": "\"Arial Black\""
+							},
+							{
+								"displayName": "Arial Unicode MS",
+								"value": "\"Arial Unicode MS\""
+							},
+							{
+								"displayName": "Calibri",
+								"value": "Calibri"
+							},
+							{
+								"displayName": "Cambria",
+								"value": "Cambria"
+							},
+							{
+								"displayName": "Cambria Math",
+								"value": "\"Cambria Math\""
+							},
+							{
+								"displayName": "Candara",
+								"value": "Candara"
+							},
+							{
+								"displayName": "Comic Sans MS",
+								"value": "\"Comic Sans MS\""
+							},
+							{
+								"displayName": "Consolas",
+								"value": "Consolas"
+							},
+							{
+								"displayName": "Constantia",
+								"value": "Constantia"
+							},
+							{
+								"displayName": "Corbel",
+								"value": "Corbel"
+							},
+							{
+								"displayName": "Courier New",
+								"value": "\"Courier New\""
+							},
+							{
+								"displayName": "Georgia",
+								"value": "Georgia"
+							},
+							{
+								"displayName": "Lucida Sans Unicode",
+								"value": "\"Lucida Sans Unicode\""
+							},
+							{
+								"displayName": "Segoe (Bold)",
+								"value": "\"Segoe UI Bold\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Segoe UI",
+								"value": "\"Segoe UI\", wf_segoe-ui_normal, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Segoe UI Light",
+								"value": "\"Segoe UI Light\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Symbol",
+								"value": "Symbol"
+							},
+							{
+								"displayName": "Tahoma",
+								"value": "Tahoma"
+							},
+							{
+								"displayName": "Times New Roman",
+								"value": "\"Times New Roman\""
+							},
+							{
+								"displayName": "Trebuchet MS",
+								"value": "\"Trebuchet MS\""
+							},
+							{
+								"displayName": "Verdana",
+								"value": "Verdana"
+							},
+							{
+								"displayName": "Wingdings",
+								"value": "Wingdings"
+							}
+						]
+					}
+				},
+				"isBold": {
+					"displayName": "黑体",
+					"description": "Make data label bold.",
+					"type": {
+						"bool": true
+					}
+				},
+				"isItalic": {
+					"displayName": "斜体",
+					"description": "Make data label italic",
+					"type": {
+						"bool": true
+					}
+				},
+				"wordWrap": {
+					"displayName": "自动换行",
+					"description": "Wraps long text in different lines.",
+					"type": {
+						"bool": true
+					}
+				}
+			}
+		},
+		"categoryLabelSettings": {
+			"displayName": "类别标签",
+			"description": "Format settings to modify look and feel of the category label for which value comes from display name of the data field.",
+			"properties": {
+				"show": {
+					"displayName": "显示类别标签",
+					"description": "Enable or disable category label.",
+					"type": {
+						"bool": true
+					}
+				},
+				"color": {
+					"displayName": "颜色",
+					"description": "Default color of the category label. If you are using conditional formatting and no condition is satisfied, then this color will be visible.",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"fontSize": {
+					"displayName": "字体大小",
+					"description": "Specify font size for category label.",
+					"type": {
+						"formatting": {
+							"fontSize": true
+						}
+					}
+				},
+				"fontFamily": {
+					"displayName": "字体",
+					"description": "Specify font family for category label.",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": "Default",
+								"value": "wf_standard-font, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Arial",
+								"value": "Arial"
+							},
+							{
+								"displayName": "Arial Black",
+								"value": "\"Arial Black\""
+							},
+							{
+								"displayName": "Arial Unicode MS",
+								"value": "\"Arial Unicode MS\""
+							},
+							{
+								"displayName": "Calibri",
+								"value": "Calibri"
+							},
+							{
+								"displayName": "Cambria",
+								"value": "Cambria"
+							},
+							{
+								"displayName": "Cambria Math",
+								"value": "\"Cambria Math\""
+							},
+							{
+								"displayName": "Candara",
+								"value": "Candara"
+							},
+							{
+								"displayName": "Comic Sans MS",
+								"value": "\"Comic Sans MS\""
+							},
+							{
+								"displayName": "Consolas",
+								"value": "Consolas"
+							},
+							{
+								"displayName": "Constantia",
+								"value": "Constantia"
+							},
+							{
+								"displayName": "Corbel",
+								"value": "Corbel"
+							},
+							{
+								"displayName": "Courier New",
+								"value": "\"Courier New\""
+							},
+							{
+								"displayName": "Georgia",
+								"value": "Georgia"
+							},
+							{
+								"displayName": "Lucida Sans Unicode",
+								"value": "\"Lucida Sans Unicode\""
+							},
+							{
+								"displayName": "Segoe (Bold)",
+								"value": "\"Segoe UI Bold\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Segoe UI",
+								"value": "\"Segoe UI\", wf_segoe-ui_normal, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Segoe UI Light",
+								"value": "\"Segoe UI Light\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Symbol",
+								"value": "Symbol"
+							},
+							{
+								"displayName": "Tahoma",
+								"value": "Tahoma"
+							},
+							{
+								"displayName": "Times New Roman",
+								"value": "\"Times New Roman\""
+							},
+							{
+								"displayName": "Trebuchet MS",
+								"value": "\"Trebuchet MS\""
+							},
+							{
+								"displayName": "Verdana",
+								"value": "Verdana"
+							},
+							{
+								"displayName": "Wingdings",
+								"value": "Wingdings"
+							}
+						]
+					}
+				},
+				"isBold": {
+					"displayName": "黑体",
+					"description": "Make category label bold.",
+					"type": {
+						"bool": true
+					}
+				},
+				"isItalic": {
+					"displayName": "斜体",
+					"description": "Make category label italic.",
+					"type": {
+						"bool": true
+					}
+				}
+			}
+		},
+		"prefixSettings": {
+			"displayName": "前缀标签",
+			"description": "Prefix related format settings.",
+			"properties": {
+				"show": {
+					"displayName": "显示前缀",
+					"description": "Enable of disable prefix label.",
+					"type": {
+						"bool": true
+					}
+				},
+				"text": {
+					"displayName": "前缀内容",
+					"description": "Specify the text that needs to be shown in prefix label. If no prefix field is specified in Fields pane, then this text will be visible.",
+					"type": {
+						"text": true
+					}
+				},
+				"color": {
+					"displayName": "颜色",
+					"description": "Default color of the prefix label. If you are using conditional formatting and no condition is satisfied, then this color will be visible.",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"spacing": {
+					"displayName": "间距",
+					"description": "Spacing between prefix label and data label in px.",
+					"type": {
+						"numeric": true
+					}
+				},
+				"fontSize": {
+					"displayName": "字体大小",
+					"description": "Specify font size for prefix label.",
+					"type": {
+						"formatting": {
+							"fontSize": true
+						}
+					}
+				},
+				"fontFamily": {
+					"displayName": "字体",
+					"description": "Specify font family for prefix label.",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": "Default",
+								"value": "wf_standard-font, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Arial",
+								"value": "Arial"
+							},
+							{
+								"displayName": "Arial Black",
+								"value": "\"Arial Black\""
+							},
+							{
+								"displayName": "Arial Unicode MS",
+								"value": "\"Arial Unicode MS\""
+							},
+							{
+								"displayName": "Calibri",
+								"value": "Calibri"
+							},
+							{
+								"displayName": "Cambria",
+								"value": "Cambria"
+							},
+							{
+								"displayName": "Cambria Math",
+								"value": "\"Cambria Math\""
+							},
+							{
+								"displayName": "Candara",
+								"value": "Candara"
+							},
+							{
+								"displayName": "Comic Sans MS",
+								"value": "\"Comic Sans MS\""
+							},
+							{
+								"displayName": "Consolas",
+								"value": "Consolas"
+							},
+							{
+								"displayName": "Constantia",
+								"value": "Constantia"
+							},
+							{
+								"displayName": "Corbel",
+								"value": "Corbel"
+							},
+							{
+								"displayName": "Courier New",
+								"value": "\"Courier New\""
+							},
+							{
+								"displayName": "Georgia",
+								"value": "Georgia"
+							},
+							{
+								"displayName": "Lucida Sans Unicode",
+								"value": "\"Lucida Sans Unicode\""
+							},
+							{
+								"displayName": "Segoe (Bold)",
+								"value": "\"Segoe UI Bold\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Segoe UI",
+								"value": "\"Segoe UI\", wf_segoe-ui_normal, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Segoe UI Light",
+								"value": "\"Segoe UI Light\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Symbol",
+								"value": "Symbol"
+							},
+							{
+								"displayName": "Tahoma",
+								"value": "Tahoma"
+							},
+							{
+								"displayName": "Times New Roman",
+								"value": "\"Times New Roman\""
+							},
+							{
+								"displayName": "Trebuchet MS",
+								"value": "\"Trebuchet MS\""
+							},
+							{
+								"displayName": "Verdana",
+								"value": "Verdana"
+							},
+							{
+								"displayName": "Wingdings",
+								"value": "Wingdings"
+							}
+						]
+					}
+				},
+				"isBold": {
+					"displayName": "黑体",
+					"description": "Make prefix label bold.",
+					"type": {
+						"bool": true
+					}
+				},
+				"isItalic": {
+					"displayName": "斜体",
+					"description": "Make prefix label italic.",
+					"type": {
+						"bool": true
+					}
+				}
+			}
+		},
+		"postfixSettings": {
+			"displayName": "后缀标签",
+			"description": "Postfix related format settings.",
+			"properties": {
+				"show": {
+					"displayName": "显示后缀",
+					"description": "Enable of disable postfix label.",
+					"type": {
+						"bool": true
+					}
+				},
+				"text": {
+					"displayName": "内容",
+					"description": "Specify the text that needs to be shown in postfix label. If no postfix field is specified in Fields pane, then this text will be visible.",
+					"type": {
+						"text": true
+					}
+				},
+				"color": {
+					"displayName": "颜色",
+					"description": "Default color of the postfix label. If you are using conditional formatting and no condition is satisfied, then this color will be visible.",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"spacing": {
+					"displayName": "间距",
+					"description": "Spacing between postfix label and data label in px.",
+					"type": {
+						"numeric": true
+					}
+				},
+				"fontSize": {
+					"displayName": "字体大小",
+					"description": "Specify font size for postfix label.",
+					"type": {
+						"formatting": {
+							"fontSize": true
+						}
+					}
+				},
+				"fontFamily": {
+					"displayName": "字体",
+					"description": "Specify font family for postfix label.",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": "Default",
+								"value": "wf_standard-font, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Arial",
+								"value": "Arial"
+							},
+							{
+								"displayName": "Arial Black",
+								"value": "\"Arial Black\""
+							},
+							{
+								"displayName": "Arial Unicode MS",
+								"value": "\"Arial Unicode MS\""
+							},
+							{
+								"displayName": "Calibri",
+								"value": "Calibri"
+							},
+							{
+								"displayName": "Cambria",
+								"value": "Cambria"
+							},
+							{
+								"displayName": "Cambria Math",
+								"value": "\"Cambria Math\""
+							},
+							{
+								"displayName": "Candara",
+								"value": "Candara"
+							},
+							{
+								"displayName": "Comic Sans MS",
+								"value": "\"Comic Sans MS\""
+							},
+							{
+								"displayName": "Consolas",
+								"value": "Consolas"
+							},
+							{
+								"displayName": "Constantia",
+								"value": "Constantia"
+							},
+							{
+								"displayName": "Corbel",
+								"value": "Corbel"
+							},
+							{
+								"displayName": "Courier New",
+								"value": "\"Courier New\""
+							},
+							{
+								"displayName": "Georgia",
+								"value": "Georgia"
+							},
+							{
+								"displayName": "Lucida Sans Unicode",
+								"value": "\"Lucida Sans Unicode\""
+							},
+							{
+								"displayName": "Segoe (Bold)",
+								"value": "\"Segoe UI Bold\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Segoe UI",
+								"value": "\"Segoe UI\", wf_segoe-ui_normal, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Segoe UI Light",
+								"value": "\"Segoe UI Light\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+							},
+							{
+								"displayName": "Symbol",
+								"value": "Symbol"
+							},
+							{
+								"displayName": "Tahoma",
+								"value": "Tahoma"
+							},
+							{
+								"displayName": "Times New Roman",
+								"value": "\"Times New Roman\""
+							},
+							{
+								"displayName": "Trebuchet MS",
+								"value": "\"Trebuchet MS\""
+							},
+							{
+								"displayName": "Verdana",
+								"value": "Verdana"
+							},
+							{
+								"displayName": "Wingdings",
+								"value": "Wingdings"
+							}
+						]
+					}
+				},
+				"isBold": {
+					"displayName": "黑体",
+					"description": "Make postfix label bold.",
+					"type": {
+						"bool": true
+					}
+				},
+				"isItalic": {
+					"displayName": "斜体",
+					"description": "Make postfix label italic.",
+					"type": {
+						"bool": true
+					}
+				}
+			}
+		},
+		"backgroundSettings": {
+			"displayName": "背景",
+			"description": "Show background color in card. This needs to ENABLE if you are using background color in CONDITIONAL formatting.",
+			"properties": {
+				"show": {
+					"type": {
+						"bool": true
+					}
+				},
+				"backgroundColor": {
+					"displayName": "颜色",
+					"description": "Default color for background. If you are using conditional formatting and no condition is satisfied, then this color will be visible.",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"showImage": {
+					"displayName": "显示图像",
+					"description": "Enable this to show image specified in Image URL in card background.",
+					"type": {
+						"bool": true
+					}
+				},
+				"imageURL": {
+					"displayName": "图像URL",
+					"description": "Specify Image URL.",
+					"type": {
+						"text": true
+					}
+				},
+				"imagePadding": {
+					"displayName": "边界间距",
+					"description": "Specify image padding in px from the border.",
+					"type": {
+						"numeric": true
+					}
+				},
+				"transparency": {
+					"displayName": "透明度",
+					"description": "Set background Transparency.",
+					"type": {
+						"integer": true
+					}
+				}
+			}
+		},
+		"strokeSettings": {
+			"displayName": "边框",
+			"description": "Enable this to display various types of stroke or border around the card.",
+			"properties": {
+				"show": {
+					"type": {
+						"bool": true
+					}
+				},
+				"strokeColor": {
+					"displayName": "颜色",
+					"description": "Specify color of the stroke.",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"strokeType": {
+					"displayName": "边框类型",
+					"description": "Specify stroke type.",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": "━━━━━",
+								"value": "0"
+							},
+							{
+								"displayName": "━ ━ ━ ━",
+								"value": "1"
+							},
+							{
+								"displayName": "· · · · · · · · · · ·",
+								"value": "2"
+							}
+						]
+					}
+				},
+				"strokeLineCap": {
+					"displayName": "边框线头",
+					"description": "Specify how stoke ends are displayed.",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": "Butt",
+								"value": "butt"
+							},
+							{
+								"displayName": "Round",
+								"value": "round"
+							},
+							{
+								"displayName": "Square",
+								"value": "square"
+							}
+						]
+					}
+				},
+				"strokeArray": {
+					"displayName": "短线长度",
+					"description": "Used in when stroke type is dashed. E.g. values 5,10,5,2 10,2,1,10 etc. Play with to find required result.",
+					"type": {
+						"text": true
+					}
+				},
+				"strokeWidth": {
+					"displayName": "宽度",
+					"description": "Specify width in px of the stroke.",
+					"type": {
+						"numeric": true
+					}
+				},
+				"cornerRadius": {
+					"displayName": "圆角弧度",
+					"description": "Radius of corner in px when any of the following is enable.",
+					"type": {
+						"numeric": true
+					}
+				},
+				"topLeft": {
+					"displayName": "左上",
+					"description": "Make top left corner round.",
+					"type": {
+						"bool": true
+					}
+				},
+				"topRight": {
+					"displayName": "右上",
+					"description": "Make top right corner round.",
+					"type": {
+						"bool": true
+					}
+				},
+				"bottomLeft": {
+					"displayName": "左下",
+					"description": "Make bottom left corner round.",
+					"type": {
+						"bool": true
+					}
+				},
+				"bottomRight": {
+					"displayName": "右下",
+					"description": "Make bottom right corner round.",
+					"type": {
+						"bool": true
+					}
+				},
+				"topLeftInward": {
+					"displayName": "左上(向内)",
+					"description": "Make top left corner round and make it inward.",
+					"type": {
+						"bool": true
+					}
+				},
+				"topRightInward": {
+					"displayName": "右上(向内)",
+					"description": "Make top right corner round and make it inward.",
+					"type": {
+						"bool": true
+					}
+				},
+				"bottomLeftInward": {
+					"displayName": "左下(向内)",
+					"description": "Make bottom left corner round and make it inward.",
+					"type": {
+						"bool": true
+					}
+				},
+				"bottomRightInward": {
+					"displayName": "右下(向内)",
+					"description": "Make bottom right corner round and make it inward.",
+					"type": {
+						"bool": true
+					}
+				}
+			}
+		},
+		"conditionSettings": {
+			"displayName": "条件",
+			"description": "Settings used for conditional formatting. Enable 'Fill' if you are going to use background color in conditional formatting.",
+			"properties": {
+				"show": {
+					"type": {
+						"bool": true
+					}
+				},
+				"conditionNumbers": {
+					"displayName": "条件数量",
+					"description": "Specify number of conditions you want to use. Max 10 conditions you can specify.",
+					"type": {
+						"numeric": true
+					}
+				},
+				"applyToDataLabel": {
+					"displayName": "数据标签",
+					"description": "Should conditional formatting apply to data label?",
+					"type": {
+						"bool": true
+					}
+				},
+				"applyToCategoryLabel": {
+					"displayName": "类别标签",
+					"description": "Should conditional formatting apply to category label?",
+					"type": {
+						"bool": true
+					}
+				},
+				"applyToPrefix": {
+					"displayName": "前缀标签",
+					"description": "Should conditional formatting apply to prefix label?",
+					"type": {
+						"bool": true
+					}
+				},
+				"applyToPostfix": {
+					"displayName": "后缀标签",
+					"description": "Should conditional formatting apply to postfix label?",
+					"type": {
+						"bool": true
+					}
+				},
+				"condition1": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value1": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor1": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"backgroundColor1": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"condition2": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value2": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor2": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"backgroundColor2": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"condition3": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value3": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor3": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"backgroundColor3": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"condition4": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value4": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor4": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"backgroundColor4": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"condition5": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value5": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor5": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"backgroundColor5": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"condition6": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value6": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor6": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"backgroundColor6": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"condition7": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value7": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor7": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"backgroundColor7": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"condition8": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value8": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor8": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"backgroundColor8": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"condition9": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value9": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor9": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"backgroundColor9": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"condition10": {
+					"displayName": "若值",
+					"type": {
+						"enumeration": [
+							{
+								"displayName": ">",
+								"value": ">"
+							},
+							{
+								"displayName": ">=",
+								"value": ">="
+							},
+							{
+								"displayName": "=",
+								"value": "="
+							},
+							{
+								"displayName": "<",
+								"value": "<"
+							},
+							{
+								"displayName": "<=",
+								"value": "<="
+							}
+						]
+					}
+				},
+				"value10": {
+					"displayName": "值",
+					"type": {
+						"numeric": true
+					}
+				},
+				"foregroundColor10": {
+					"displayName": "前景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": true
+							}
+						}
+					}
+				},
+				"backgroundColor10": {
+					"displayName": "背景色",
+					"type": {
+						"fill": {
+							"solid": {
+								"color": {
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"tootlipSettings": {
+			"displayName": "默认提示",
+			"description": "Add and modify general tooltip items. Enable Tooltip below to show them on the card.",
+			"properties": {
+				"title": {
+					"displayName": "标题",
+					"description": "Custom title in tooltip.",
+					"type": {
+						"text": true
+					}
+				},
+				"content": {
+					"displayName": "内容",
+					"description": "Custom text in tooltip.",
+					"type": {
+						"text": true
+					}
+				},
+				"measureFormat": {
+					"displayName": "显示单位",
+					"type": {
+						"formatting": {
+							"labelDisplayUnits": true
+						}
+					}
+				},
+				"measurePrecision": {
+					"displayName": "小数位数",
+					"type": {
+						"numeric": true
+					}
+				}
+			}
+		},
+		"aboutSettings": {
+			"displayName": "关于",
+			"description": "Information related to Advance Card such as version, help url and other useful links.",
+			"properties": {
+				"version": {
+					"displayName": "版本",
+					"description": "Version of the Advance Card that you are using.",
+					"type": {
+						"text": true
+					}
+				},
+				"helpUrl": {
+					"displayName": "帮助",
+					"description": "URL for general guidelines. Detailed documentaion available on GitHub.",
+					"type": {
+						"text": true
+					}
+				}
+			}
+		},
+		
+		"externalLink": {
+			"displayName": "External Link",
+			"description": "Redirect user to external link when they click on the card.",
+			"properties": {
+				"show": {
+					"displayName": "Enable External Link",
+					"description": "",
+					"type": {
+						"bool": true
+					}
+				},
+				"url": {
+					"displayName": "URL",
+					"description": "External URL",
+					"type": {
+						"text": true
+					}
+				}
+			}
+		}
+	},
+	"tooltips": {
+        "supportedTypes": {
+            "default": true,
+            "canvas": true
+        }
+    },
+	"suppressDefaultTitle": true
+}
